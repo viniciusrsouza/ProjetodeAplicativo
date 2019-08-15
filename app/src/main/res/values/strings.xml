@@ -3,4 +3,7 @@
     <string name="load_label">Carregando…</string>
     <string name="load_request">Coletando dados…</string>
     <string name="load_json">processando dados…</string>
+    <string name="load_fail">Falha ao coletar dados do servidor, verifique sua conexão com a internet e tente
+        novamente
+    </string>
 </resources>

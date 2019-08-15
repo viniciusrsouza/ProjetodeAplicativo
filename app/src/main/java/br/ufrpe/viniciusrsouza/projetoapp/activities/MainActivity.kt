@@ -1,12 +1,13 @@
-package br.ufrpe.viniciusrsouza.projetoapp
+package br.ufrpe.viniciusrsouza.projetoapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
 import android.widget.TextView
+import br.ufrpe.viniciusrsouza.projetoapp.R
 import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
+import br.ufrpe.viniciusrsouza.projetoapp.data.LivrosWrapper
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -15,8 +16,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.Exception
 import java.lang.IllegalArgumentException
-import java.lang.reflect.Type
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -40,15 +39,20 @@ class MainActivity : AppCompatActivity() {
                 val livros = parseResponse(response)
                 finnish(livros)
             },
-            Response.ErrorListener { println("DEBUG") })
+            Response.ErrorListener {
+                findViewById<TextView>(R.id.progressLabel).apply{
+                    text = resources.getString(R.string.load_fail)
+                }
+            })
         queue.add(stringRequest)
     }
 
     private fun finnish(livros: ArrayList<Livro>){
-        findViewById<ProgressBar>(R.id.progress).visibility = View.GONE
-        findViewById<TextView>(R.id.progressLabel).apply{
-            text = livros.toString()
+        val wrapper = LivrosWrapper(livros)
+        val intent = Intent(this, DisplayLivrosActivity::class.java).apply {
+            putExtra("livrosWrapper", wrapper)
         }
+        startActivity(intent)
     }
 
     private fun parseResponse(response: String): ArrayList<Livro> {
