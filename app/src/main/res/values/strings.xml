@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Projeto de Aplicativo</string>
+    <string name="load_label">Carregando…</string>
+</resources>
