@@ -1,5 +1,6 @@
 package br.ufrpe.viniciusrsouza.projetoapp.data
 
+import android.icu.text.SimpleDateFormat
 import java.io.Serializable
 
 data class Livro(
@@ -15,7 +16,14 @@ data class Livro(
     val serialVersionUID:Long = 1L
 ): Serializable
 
-data class Date(val date: String): Serializable
+class Date(date: String): Serializable{
+    val date:String = date
+    get() {
+        return field.substring(0, 4) + "/" +
+                field.substring(5, 7) + "/" +
+                field.substring(8, 10)
+    }
+}
 
 class LivrosWrapper(val livros: ArrayList<Livro>): Serializable{
     val serialVersionUID = 1L
