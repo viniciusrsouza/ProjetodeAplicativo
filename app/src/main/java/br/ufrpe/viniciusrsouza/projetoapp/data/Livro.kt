@@ -12,11 +12,11 @@ data class Livro(
     val status: String,
     val authors: Set<String>,
     val categories: Set<String>,
-    val serial:Long = 1L
+    val serialVersionUID:Long = 1L
 ): Serializable
 
-data class Date(val date: String)
+data class Date(val date: String): Serializable
 
 class LivrosWrapper(val livros: ArrayList<Livro>): Serializable{
-    val serial = 1L
+    val serialVersionUID = 1L
 }
