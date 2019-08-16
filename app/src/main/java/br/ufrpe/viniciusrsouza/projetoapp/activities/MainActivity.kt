@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     text = resources.getString(R.string.load_json)
                 }
                 val livros = parseResponse(response)
-                finnish(livros)
+                finish(livros)
             },
             Response.ErrorListener {
                 findViewById<TextView>(R.id.progressLabel).apply{
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         queue.add(stringRequest)
     }
 
-    private fun finnish(livros: ArrayList<Livro>){
+    private fun finish(livros: ArrayList<Livro>){
         val wrapper = LivrosWrapper(livros)
         val intent = Intent(this, DisplayLivrosActivity::class.java).apply {
             putExtra("livrosWrapper", wrapper)
