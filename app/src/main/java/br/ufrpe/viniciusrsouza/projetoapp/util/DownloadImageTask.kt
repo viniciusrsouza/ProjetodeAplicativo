@@ -4,24 +4,33 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.util.Log
-import android.widget.ImageView
+import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
+import br.ufrpe.viniciusrsouza.projetoapp.view.LivroAdapter
 import java.lang.Exception
 import java.net.URL
 
-class DownloadImageTask(val image: ImageView): AsyncTask<String, Void, Bitmap>() {
+class DownloadImageTask(private val map: HashMap<Livro, Bitmap?>,
+                        private val livro: Livro,
+                        private val livroAdapter: LivroAdapter,
+                        private val position: Int
+    ): AsyncTask<String, Void, Bitmap>() {
+
     override fun doInBackground(vararg url: String?): Bitmap? {
         val urlDisplay = url[0]
         var bmp: Bitmap? = null
         try{
-            val input = URL(urlDisplay).openStream()
-            bmp = BitmapFactory.decodeStream(input)
+            if(urlDisplay != null) {
+                val input = URL(urlDisplay).openStream()
+                bmp = BitmapFactory.decodeStream(input)
+            }
         } catch(e: Exception){
-            Log.println(Log.ERROR, "ERR", e.message.toString())
+            Log.println(Log.ERROR, "DBG", e.message.toString())
         }
         return bmp
     }
 
     override fun onPostExecute(result: Bitmap?) {
-        image.setImageBitmap(result)
+        map[livro] = result
+        livroAdapter.notifyItemChanged(position)
     }
 }

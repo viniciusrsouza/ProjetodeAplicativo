@@ -6,4 +6,5 @@
     <string name="load_fail">Falha ao coletar dados do servidor, verifique sua conexão com a internet e tente
         novamente
     </string>
+    <string name="img_missing">Sem imagem disponível</string>
 </resources>

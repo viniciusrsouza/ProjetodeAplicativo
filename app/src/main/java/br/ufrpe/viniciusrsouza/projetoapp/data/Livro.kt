@@ -7,8 +7,8 @@ data class Livro(
     val title: String,
     val isbn: String,
     val pageCount: Int,
-    val publishedDate: Date,
-    val thumbnailUrl: String,
+    val publishedDate: Date?,
+    val thumbnailUrl: String?,
     val shortDescription: String,
     val status: String,
     val authors: Set<String>,
@@ -22,6 +22,10 @@ class Date(date: String): Serializable{
         return field.substring(0, 4) + "/" +
                 field.substring(5, 7) + "/" +
                 field.substring(8, 10)
+    }
+
+    override fun toString(): String {
+        return this.date
     }
 }
 
