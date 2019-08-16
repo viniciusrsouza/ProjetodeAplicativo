@@ -38,10 +38,8 @@ class LivroAdapter(private val livros: List<Livro>, val imgCache: HashMap<Livro,
 
         if(livro.thumbnailUrl != null){
             holder.img.setImageBitmap(imgCache[livro])
-            holder.missing.visibility = TextView.GONE
         }else{
             holder.img.setImageBitmap(null)
-            holder.missing.visibility = TextView.VISIBLE
         }
     }
 

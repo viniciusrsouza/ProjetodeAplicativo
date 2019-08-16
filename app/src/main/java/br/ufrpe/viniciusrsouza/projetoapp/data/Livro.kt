@@ -9,6 +9,7 @@ data class Livro(
     val publishedDate: Date?,
     val thumbnailUrl: String?,
     val shortDescription: String,
+    val longDescription: String,
     val status: String,
     val authors: Set<String>,
     val categories: Set<String>,

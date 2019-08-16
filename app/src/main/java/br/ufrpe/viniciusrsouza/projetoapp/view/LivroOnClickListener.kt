@@ -20,7 +20,7 @@ class LivroOnClickListener(val recyclerView: RecyclerView, val livros: List<Livr
         val adapter = recyclerView.adapter as LivroAdapter
         val image = adapter.imgCache[livros[position]]
         val stream = ByteArrayOutputStream()
-        image!!.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        image?.compress(Bitmap.CompressFormat.PNG, 100, stream)
         val bytes = stream.toByteArray()
 
         val intent = Intent(recyclerView.context, LivroActivity::class.java).apply {
