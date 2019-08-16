@@ -1,6 +1,5 @@
 package br.ufrpe.viniciusrsouza.projetoapp.data
 
-import android.icu.text.SimpleDateFormat
 import java.io.Serializable
 
 data class Livro(

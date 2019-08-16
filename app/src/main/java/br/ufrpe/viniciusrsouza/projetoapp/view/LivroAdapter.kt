@@ -12,7 +12,7 @@ import br.ufrpe.viniciusrsouza.projetoapp.R
 import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
 import br.ufrpe.viniciusrsouza.projetoapp.util.DownloadImageTask
 
-class LivroAdapter(private val livros: List<Livro>, private val imgCache: HashMap<Livro, Bitmap?>):
+class LivroAdapter(private val livros: List<Livro>, val imgCache: HashMap<Livro, Bitmap?>):
     RecyclerView.Adapter<LivroAdapter.LivroViewHolder>(){
 
     lateinit var onClickListener: LivroOnClickListener

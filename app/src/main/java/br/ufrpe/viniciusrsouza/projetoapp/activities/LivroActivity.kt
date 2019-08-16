@@ -1,10 +1,13 @@
 package br.ufrpe.viniciusrsouza.projetoapp.activities
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.ufrpe.viniciusrsouza.projetoapp.R
+import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
+import br.ufrpe.viniciusrsouza.projetoapp.view.LivroOnClickListener
 
 class LivroActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +21,10 @@ class LivroActivity: AppCompatActivity() {
         val publishDate = findViewById<TextView>(R.id.date)
         val description = findViewById<TextView>(R.id.description)
 
+        val livro = intent.getSerializableExtra("Livro") as Livro
+        val imagemBitmap = intent.getSerializableExtra("Imagem") as LivroOnClickListener.ImagesWrapper
+        title.text = livro.title
+        image.setImageBitmap()
 
     }
 }

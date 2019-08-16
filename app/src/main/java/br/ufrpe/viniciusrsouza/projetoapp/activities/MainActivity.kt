@@ -1,10 +1,10 @@
 package br.ufrpe.viniciusrsouza.projetoapp.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import br.ufrpe.viniciusrsouza.projetoapp.R
 import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
 import br.ufrpe.viniciusrsouza.projetoapp.data.LivrosWrapper
@@ -14,9 +14,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.lang.Exception
-import java.lang.IllegalArgumentException
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
