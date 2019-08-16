@@ -1,17 +1,13 @@
 package br.ufrpe.viniciusrsouza.projetoapp.activities
 
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Layout
-import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.ufrpe.viniciusrsouza.projetoapp.R
 import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
-import br.ufrpe.viniciusrsouza.projetoapp.view.LivroOnClickListener
 
 class LivroActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +42,5 @@ class LivroActivity: AppCompatActivity() {
         image.setImageBitmap(imgBitmap)
 
         description.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-        //description.movementMethod = ScrollingMovementMethod()
-
     }
 }

@@ -7,4 +7,5 @@
         novamente
     </string>
     <string name="img_missing">Sem imagem disponível</string>
+    <string name="retry">Tentar novamente</string>
 </resources>

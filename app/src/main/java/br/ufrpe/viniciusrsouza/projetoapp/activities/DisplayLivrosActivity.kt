@@ -36,7 +36,8 @@ class DisplayLivrosActivity: AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         listLivros.adapter = livroAdapter
         listLivros.layoutManager = layoutManager
-
     }
+
+    override fun onBackPressed() {}
 
 }

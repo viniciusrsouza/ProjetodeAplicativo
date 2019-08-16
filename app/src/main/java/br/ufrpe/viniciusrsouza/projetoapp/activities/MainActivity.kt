@@ -3,6 +3,7 @@ package br.ufrpe.viniciusrsouza.projetoapp.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.ufrpe.viniciusrsouza.projetoapp.R
@@ -19,8 +20,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<TextView>(R.id.progressLabel).apply{
+        val progressLabel = findViewById<TextView>(R.id.progressLabel)
+        progressLabel.apply{
             text = resources.getString(R.string.load_request)
+        }
+        findViewById<Button>(R.id.retry).apply {
+            visibility = Button.GONE
+            setOnClickListener {
+                visibility = Button.GONE
+                progressLabel.apply{
+                    text = resources.getString(R.string.load_request)
+                }
+                httpGet("https://api.myjson.com/bins/h8xi7")
+            }
         }
         httpGet("https://api.myjson.com/bins/h8xi7")
     }
@@ -40,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.progressLabel).apply{
                     text = resources.getString(R.string.load_fail)
                 }
+                findViewById<Button>(R.id.retry).apply { visibility = Button.VISIBLE }
             })
         queue.add(stringRequest)
     }
