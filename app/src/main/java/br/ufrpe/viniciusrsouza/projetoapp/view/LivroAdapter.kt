@@ -15,15 +15,12 @@ import br.ufrpe.viniciusrsouza.projetoapp.util.DownloadImageTask
 class LivroAdapter(private val livros: List<Livro>, private val imgCache: HashMap<Livro, Bitmap?>):
     RecyclerView.Adapter<LivroAdapter.LivroViewHolder>(){
 
-    private val noImage = livros.filter { it.thumbnailUrl == null }
+    lateinit var onClickListener: LivroOnClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivroViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.elemento_livro, parent, false)
-        Log.println(Log.DEBUG, "DBG", noImage.toString())
-        view.setOnClickListener{
-            Log.println(Log.DEBUG, "DBG", "Clicado")
-        }
+        view.setOnClickListener(onClickListener)
         return LivroViewHolder(view)
     }
 
@@ -44,6 +41,7 @@ class LivroAdapter(private val livros: List<Livro>, private val imgCache: HashMa
             holder.missing.visibility = TextView.GONE
         }else{
             holder.img.setImageBitmap(null)
+            holder.missing.visibility = TextView.VISIBLE
         }
     }
 
@@ -55,5 +53,4 @@ class LivroAdapter(private val livros: List<Livro>, private val imgCache: HashMa
         val categories: TextView = itemView.findViewById(R.id.categories)
         val publishDate: TextView = itemView.findViewById(R.id.publishDate)
     }
-
 }

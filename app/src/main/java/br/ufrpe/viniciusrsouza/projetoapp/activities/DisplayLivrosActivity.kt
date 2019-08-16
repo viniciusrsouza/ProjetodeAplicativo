@@ -12,6 +12,7 @@ import br.ufrpe.viniciusrsouza.projetoapp.data.Livro
 import br.ufrpe.viniciusrsouza.projetoapp.data.LivrosWrapper
 import br.ufrpe.viniciusrsouza.projetoapp.util.DownloadImageTask
 import br.ufrpe.viniciusrsouza.projetoapp.view.LivroAdapter
+import br.ufrpe.viniciusrsouza.projetoapp.view.LivroOnClickListener
 import java.net.URL
 
 class DisplayLivrosActivity: AppCompatActivity() {
@@ -29,6 +30,7 @@ class DisplayLivrosActivity: AppCompatActivity() {
         livros = wrapper.livros
         listLivros = findViewById(R.id.listLivros)
         livroAdapter = LivroAdapter(livros, imgCache)
+        livroAdapter.onClickListener = LivroOnClickListener(listLivros, livros, this)
 
 
         layoutManager = LinearLayoutManager(this)
